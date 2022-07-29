@@ -1,0 +1,225 @@
+@font-face {
+  font-family: "Raleway";
+  font-style: normal;
+  font-weight: 400;
+  src: url(https://fonts.gstatic.com/s/raleway/v28/1Ptxg8zYS_SKggPN4iEgvnHyvveLxVvaorCIPrQ.ttf)
+    format("truetype");
+}
+@font-face {
+  font-family: "Raleway";
+  font-style: normal;
+  font-weight: 700;
+  src: url(https://fonts.gstatic.com/s/raleway/v28/1Ptxg8zYS_SKggPN4iEgvnHyvveLxVs9pbCIPrQ.ttf)
+    format("truetype");
+}
+.business-card {
+  display: grid;
+  overflow: hidden;
+  position: relative;
+  line-height: 1.6;
+  font-size: 4.5vmin;
+  width: 100vmin;
+  height: 60vmin;
+  padding: 7vmin;
+  border-radius: 6px;
+  box-shadow: 0 5px 15px -5px rgba(0, 0, 0, 0.4);
+}
+.content {
+  z-index: 2;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 1fr 1fr 1fr;
+  font-family: "Raleway", sans-serif;
+  color: #222831;
+}
+.top {
+  display: grid;
+  grid-column: 0.33333333;
+  grid-row: 1;
+  align-content: start;
+  grid-gap: 1.5vmin;
+  animation: inLeft;
+  animation-duration: 1s;
+}
+.name {
+  font-size: 2em;
+  font-weight: 700;
+  line-height: 1;
+}
+.profession {
+  color: #393e46;
+  text-transform: uppercase;
+  font-size: 1em;
+  font-weight: 700;
+}
+.bottom {
+  display: grid;
+  grid-column: 0.33333333;
+  grid-row: 3;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-content: end;
+}
+.bottom .left {
+  font-weight: 700;
+  font-size: 0.9em;
+  grid-column: 1;
+  animation: inLeft;
+  animation-duration: 1s;
+}
+.bottom .right {
+  grid-column: 3;
+  align-self: end;
+  animation: inRight;
+  animation-duration: 1s;
+}
+.location {
+  white-space: nowrap;
+  text-align: right;
+  color: #393e46;
+  text-transform: uppercase;
+  font-size: 0.9em;
+}
+.background {
+  z-index: 1;
+  background-color: #eeeeee;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}
+.slice {
+  top: -59vmin;
+  left: -1vmin;
+  position: absolute;
+  width: 90vmin;
+  height: 150vmin;
+  background: #00adb5;
+  background: -webkit-linear-gradient(to right, #00adb5, #018b92);
+  background: linear-gradient(to right, #00adb5, #018b92);
+  transform: rotate(38deg);
+  animation: inRotate;
+  animation-duration: 1s;
+}
+@keyframes inRotate {
+  0% {
+    transform: translateX(-100vmin) rotate(15deg);
+  }
+  100% {
+    transform: translateX(0) rotate(38deg);
+  }
+}
+@keyframes inLeft {
+  0% {
+    transform: translateX(-100vmin);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+@keyframes inRight {
+  0% {
+    transform: translateX(100vmin);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+html {
+  height: 100%;
+}
+body {
+  background: #f7f7f7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  margin: 0;
+}
+
+#container-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  margin-top: 30px;
+}
+
+button {
+  position: relative;
+  display: inline-block;
+  cursor: pointer;
+  outline: none;
+  border: 0;
+  vertical-align: middle;
+  text-decoration: none;
+  background: transparent;
+  padding: 0;
+  font-size: inherit;
+  font-family: inherit;
+}
+button.share {
+  width: 12rem;
+  height: auto;
+}
+button.share .circle {
+  transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+  position: relative;
+  display: block;
+  margin: 0;
+  width: 3rem;
+  height: 3rem;
+  background: #282936;
+  border-radius: 1.625rem;
+}
+button.share .circle .icon {
+  transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+  background: #fff;
+}
+button.share .circle .icon.share-icon {
+  transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+  left: 0.625rem;
+  width: 1.125rem;
+  height: 0.125rem;
+  background: none;
+}
+button.share .circle .icon.share-icon::before {
+  position: absolute;
+  content: "";
+  top: -0.25rem;
+  right: 0.0625rem;
+  width: 0.625rem;
+  height: 0.625rem;
+  border-top: 0.125rem solid #fff;
+  border-right: 0.125rem solid #fff;
+  transform: rotate(45deg);
+}
+button.share .button-text {
+  transition: all 0.45s cubic-bezier(0.65, 0, 0.076, 1);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  padding: 0.75rem 0;
+  margin: 0 0 0 0.8rem;
+  color: #282936;
+  font-weight: 700;
+  line-height: 1.6;
+  text-align: center;
+  text-transform: uppercase;
+}
+button:hover .circle {
+  width: 100%;
+}
+button:hover .circle .icon.arrow {
+  background: #fff;
+  transform: translate(1rem, 0);
+}
+button:hover .button-text {
+  color: #fff;
+}
