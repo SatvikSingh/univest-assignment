@@ -1,5 +1,6 @@
 import React from "react";
 import "./Card.css";
+import html2canvas from "html2canvas";
 
 const data = {
   name: "Satvik Singh",
@@ -7,37 +8,84 @@ const data = {
   email: "satviksingh18@gmail.com",
   phone: "+91-9818091859",
   location: "New Delhi, India",
+  website: "https://github.com/SatvikSingh"
 };
 
 const Card = () => {
+  const share = async () => {
+    if (!("share" in navigator)) {
+      return;
+    }
+    const canvas = await html2canvas(document.querySelector(".share-content"));
+    canvas.toBlob(async (blob) => {
+      const files = [new File([blob], "image.png", { type: blob.type })];
+      const shareData = {
+        text: "Checkout my business card!",
+        files,
+      };
+      if (navigator.canShare(shareData)) {
+        try {
+          await navigator.share(shareData);
+        } catch (err) {
+          if (err.name !== "AbortError") {
+            console.error(err.name, err.message);
+          }
+        }
+      } else {
+        console.warn("Sharing not supported", shareData);
+      }
+    });
+  };
+
   return (
     <div>
-      <div class="business-card">
-        <div class="content">
-          <div class="top">
-            <div class="name text">{data.name}</div>
-            <div class="profession text">{data.profession}</div>
+      <div className="share-content">
+        <div className="business-card">
+          <div className="content">
+            <div className="top">
+              <div className="name text">{data.name}</div>
+              <div className="profession text">{data.profession}</div>
+            </div>
+            <div className="bottom">
+              <div className="left">
+                <div className="email text">{data.email}</div>
+                <div className="phone text">{data.phone}</div>
+              </div>
+              <div className="right">
+                <div className="location text">{data.location}</div>
+              </div>
+            </div>
           </div>
-          <div class="bottom">
-            <div class="left">
-              <div class="email text">{data.email}</div>
-              <div class="phone text">{data.phone}</div>
-            </div>
-            <div class="right">
-              <div class="location text">{data.location}</div>
-            </div>
+          <div className="background">
+            <div className="slice"></div>
           </div>
         </div>
-        <div class="background">
-          <div class="slice"></div>
+
+        <div className="business-card">
+          <div className="content">
+            <div className="top">
+              <div className="name text">Website</div>
+              <div className="email text">{data.website}</div>
+            </div>
+            <div className="bottom">
+              <div className="left">
+                <div className="email text">{data.email}</div>
+                <div className="phone text">{data.phone}</div>
+              </div>
+              <div className="right">
+                <div className="location text">{data.location}</div>
+              </div>
+            </div>
+          </div>
+          <div className="background">
+            <div className="slice"></div>
+          </div>
         </div>
       </div>
-      <div id="container-button">
-        <button class="share">
-          <span class="circle" aria-hidden="true">
-            <span class="icon share-icon"></span>
-          </span>
-          <span class="button-text">Share</span>
+
+      <div className="btn-wrap">
+        <button className="button" onClick={share}>
+          Share Image
         </button>
       </div>
     </div>
