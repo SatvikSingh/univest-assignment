@@ -13,6 +13,20 @@
     format("truetype");
 }
 
+html {
+  height: 200%;
+}
+body {
+  background: #f7f7f7;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  margin: 0;
+}
+
+/* Styling for business card */
+
 .business-card {
   display: grid;
   overflow: hidden;
@@ -103,17 +117,8 @@
   animation: inRotate;
   animation-duration: 1s;
 }
-html {
-  height: 200%;
-}
-body {
-  background: #f7f7f7;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100%;
-  margin: 0;
-}
+
+/* Styling for Share Button */
 
 .btn-wrap {
   height: 100%;
